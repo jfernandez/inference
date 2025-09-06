@@ -145,7 +145,7 @@ async fn process_inference(
 async fn main() -> Result<()> {
     println!("🚀 Loading LLM for HTTP serving...");
 
-    let device = Device::Cpu;
+    let device = Device::new_cuda(0)?;
     
     let api = Api::new()?;
     let repo = api.model("Qwen/Qwen2-0.5B".to_string());
